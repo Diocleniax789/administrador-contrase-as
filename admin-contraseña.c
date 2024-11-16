@@ -79,6 +79,8 @@ char * carga_caract_no_permitidos(){
     scanf("%s",caract_no_permitidos);
 
     printf("\n * Carga finalizada * \n");
+    printf("\n");
+    printf("\n ------------------------------------------------ \n");
 
     return caract_no_permitidos;
 }
@@ -89,7 +91,7 @@ void valida_usuarios(struct usuario *usuarios, int cantidad_usuarios_cargados, c
     static char password_usuario[30];
 
     for(i = 0; i < cantidad_usuarios_cargados; i++){
-        printf("\n ----------------------- \n");
+        printf("\n ================================= \n");
         strcpy(password_usuario,usuarios[i].password);
         usuarios[i].accion = valida_clave(password_usuario,caracteres_no_validos);
     }
@@ -165,7 +167,8 @@ int valida_clave(char *password_usuario, char *caracteres_no_validos){
 
 void envia_mail(struct usuario *usuarios, int cantidad_usuarios_cargados){
     int i;
-
+    printf("\n");
+    printf("\n **************************************************************** \n");
     printf("\n Listado de los usuarios forzados a cambiar la clave \n");
     printf("\n Nombre de usuario\t Mail\t Codigo de usuario \n");
     for(i = 0; i < cantidad_usuarios_cargados; i++){

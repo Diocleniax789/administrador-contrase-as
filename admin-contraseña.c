@@ -24,6 +24,7 @@ int main(){
     char *caracteres_no_validos;
 
     carga_usuarios(usuarios,&cantidad_usuarios_cargados);
+    system("cls");
     caracteres_no_validos = carga_caract_no_permitidos();
     valida_usuarios(usuarios,cantidad_usuarios_cargados,caracteres_no_validos);
     envia_mail(usuarios,cantidad_usuarios_cargados);
@@ -64,6 +65,7 @@ void carga_usuarios(struct usuario *usuarios,int *cantidad_usuarios_cargados){
 
     printf("\n");
     printf("\n * Carga finalizada * \n");
+    printf("\n");
     system("pause");
 
 }
@@ -72,7 +74,6 @@ char * carga_caract_no_permitidos(){
     int i;
     static char caract_no_permitidos[5];
 
-    system("pause");
     printf("\n");
     printf("\n ----------------------------------------------- \n");
     printf("\n Cargue cadena de caracteres no permitidos: ");

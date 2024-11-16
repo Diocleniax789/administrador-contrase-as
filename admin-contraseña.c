@@ -62,13 +62,17 @@ void carga_usuarios(struct usuario *usuarios,int *cantidad_usuarios_cargados){
         }
     }
 
+    printf("\n");
     printf("\n * Carga finalizada * \n");
+    system("pause");
+
 }
 
 char * carga_caract_no_permitidos(){
     int i;
     static char caract_no_permitidos[5];
 
+    system("pause");
     printf("\n");
     printf("\n ----------------------------------------------- \n");
     printf("\n Cargue cadena de caracteres no permitidos: ");
@@ -85,6 +89,7 @@ void valida_usuarios(struct usuario *usuarios, int cantidad_usuarios_cargados, c
     static char password_usuario[30];
 
     for(i = 0; i < cantidad_usuarios_cargados; i++){
+        printf("\n ----------------------- \n");
         strcpy(password_usuario,usuarios[i].password);
         usuarios[i].accion = valida_clave(password_usuario,caracteres_no_validos);
     }

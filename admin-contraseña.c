@@ -26,7 +26,9 @@ int main(){
     carga_usuarios(usuarios,&cantidad_usuarios_cargados);
     system("cls");
     caracteres_no_validos = carga_caract_no_permitidos();
+    system("cls");
     valida_usuarios(usuarios,cantidad_usuarios_cargados,caracteres_no_validos);
+    system("cls");
     envia_mail(usuarios,cantidad_usuarios_cargados);
 
     return 0;
@@ -78,11 +80,12 @@ char * carga_caract_no_permitidos(){
     printf("\n ----------------------------------------------- \n");
     printf("\n Cargue cadena de caracteres no permitidos: ");
     scanf("%s",caract_no_permitidos);
-
+    printf("\n");
     printf("\n * Carga finalizada * \n");
     printf("\n");
     printf("\n ------------------------------------------------ \n");
-
+    printf("\n");
+    system("pause");
     return caract_no_permitidos;
 }
 
@@ -94,15 +97,20 @@ void valida_usuarios(struct usuario *usuarios, int cantidad_usuarios_cargados, c
     for(i = 0; i < cantidad_usuarios_cargados; i++){
         printf("\n ================================= \n");
         printf("\n Verificando al usuario nro %i",i + 1);
+        printf("\n");
         strcpy(password_usuario,usuarios[i].password);
         usuarios[i].accion = valida_clave(password_usuario,caracteres_no_validos);
     }
-
+    printf("\n");
+    printf("\n -----------------------------------");
     printf("\n *** Verificaciones completadas *** \n");
+    printf("\n ---------------------------------- \n");
+    printf("\n");
+    system("pause");
 }
 
 int valida_clave(char *password_usuario, char *caracteres_no_validos){
-    int longitud_clave,longitud_carac_no_validos,flag = 0,detectar_caracter_no_valido = 0,pos = 0,i,j,contador_numeros = 0;
+    int longitud_clave,longitud_carac_no_validos,pos,flag = 0,detectar_caracter_no_valido = 0,i,j,contador_numeros = 0;
     char caracter;
 
     longitud_clave = strlen(password_usuario);
@@ -114,7 +122,7 @@ int valida_clave(char *password_usuario, char *caracteres_no_validos){
 
         for(i = 0; i < longitud_clave; i++){
             caracter = password_usuario[i];
-
+            pos = 0;
             do{
                 if(caracter == caracteres_no_validos[pos]){
                     flag = 1;
@@ -127,9 +135,6 @@ int valida_clave(char *password_usuario, char *caracteres_no_validos){
 
             if(flag == 1){
                 detectar_caracter_no_valido++;
-                Sleep(1000);
-                break;
-                printf("\n x Se encontro un caracter no valido x \n");
             }
         }
 
@@ -145,11 +150,11 @@ int valida_clave(char *password_usuario, char *caracteres_no_validos){
 
             if(contador_numeros >= 3){
                 Sleep(1000);
-                printf("\n * Cantidad permitida * \n ");
+                printf("\n * Cantidad de numeros permitida * \n ");
                 return 0;
             } else{
                 Sleep(1000);
-                printf("\n x Poca cantidad de caracteres x \n");
+                printf("\n x Poca o ninguna cantidad de numeros x \n");
                 return 1;
             }
 
@@ -172,10 +177,10 @@ void envia_mail(struct usuario *usuarios, int cantidad_usuarios_cargados){
     printf("\n");
     printf("\n **************************************************************** \n");
     printf("\n Listado de los usuarios forzados a cambiar la clave \n");
-    printf("\n Nombre de usuario\t Mail\t Codigo de usuario \n");
+    printf("\n Nombre de usuario\t Mail\t\t\t Codigo de usuario \n");
     for(i = 0; i < cantidad_usuarios_cargados; i++){
         if(usuarios[i].accion == 1){
-            printf("\n %s\t %s\t %s\n",usuarios[i].nom_usu,usuarios[i].mail,usuarios[i].cod_usu);
+            printf("\n %s\t\t\t %s\t %s\n",usuarios[i].nom_usu,usuarios[i].mail,usuarios[i].cod_usu);
         }
         printf("\n");
     }

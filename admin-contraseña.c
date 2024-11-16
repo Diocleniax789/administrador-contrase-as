@@ -69,6 +69,8 @@ char * carga_caract_no_permitidos(){
     int i;
     static char caract_no_permitidos[5];
 
+    printf("\n");
+    printf("\n ----------------------------------------------- \n");
     printf("\n Cargue cadena de caracteres no permitidos: ");
     scanf("%s",caract_no_permitidos);
 

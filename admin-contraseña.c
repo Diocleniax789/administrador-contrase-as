@@ -92,6 +92,7 @@ void valida_usuarios(struct usuario *usuarios, int cantidad_usuarios_cargados, c
 
     for(i = 0; i < cantidad_usuarios_cargados; i++){
         printf("\n ================================= \n");
+        printf("\n Verificando al usuario nro %i",i + 1);
         strcpy(password_usuario,usuarios[i].password);
         usuarios[i].accion = valida_clave(password_usuario,caracteres_no_validos);
     }

@@ -60,4 +60,25 @@ void carga_usuarios(struct usuario *usuarios,int *cantidad_usuarios_cargados){
             system("pause");
         }
     }
+
+    printf("\n * Carga finalizada * \n");
 }
+
+char * carga_caract_no_permitidos(){
+    int i, cantidad_caracteres = 5;
+    static char caract_no_permitidos[5];
+
+    for(i = 0; i < cantidad_caracteres; i++){
+        system("cls");
+        fflush(stdin);
+        printf("Caracter permitido nro %i", i + 1);
+        printf("\n");
+        printf("\n + Ingrese caracter: ");
+        scanf("%c",caract_no_permitidos[i]);
+    }
+
+    printf("\n * Carga finalizada * \n");
+
+    return caract_no_permitidos;
+}
+
